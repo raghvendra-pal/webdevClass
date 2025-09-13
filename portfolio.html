@@ -1,0 +1,174 @@
+import React from 'react'
+import { Mail, Github, Linkedin } from 'lucide-react'
+import { motion } from 'framer-motion'
+
+// Single-file React portfolio component
+// TailwindCSS required in the project. Drop this component in a Next.js or CRA app.
+
+const projects = [
+  {
+    title: 'Project One — Cloud Infra Automation',
+    desc: 'Automated infra provisioning using Terraform + CI/CD. Reduced deploy time by 70%.',
+    tags: ['Terraform', 'AWS', 'CI/CD'],
+    link: '#'
+  },
+  {
+    title: 'Project Two — ML Pipeline',
+    desc: 'End-to-end ML pipeline with monitoring and model registry.',
+    tags: ['Python', 'MLflow', 'Docker'],
+    link: '#'
+  },
+  {
+    title: 'Project Three — Fullstack App',
+    desc: 'Realtime collaborative app with WebSockets and PostgreSQL.',
+    tags: ['React', 'Node', 'Postgres'],
+    link: '#'
+  }
+]
+
+const skills = [
+  'Cloud (AWS, GCP)',
+  'Infrastructure as Code (Terraform)',
+  'Kubernetes & Docker',
+  'Python / Node.js',
+  'Machine Learning & Data Pipelines',
+  'CI/CD & GitOps'
+]
+
+export default function Portfolio() {
+  return (
+    <div className="min-h-screen bg-gray-900 text-gray-100 antialiased">
+      <header className="max-w-5xl mx-auto p-6 flex items-center justify-between">
+        <div>
+          <h1 className="text-2xl font-extrabold tracking-tight">Rishabh Pal</h1>
+          <p className="text-sm text-gray-400">Cloud Engineer • ML Enthusiast • Builder</p>
+        </div>
+        <nav className="flex gap-4 items-center">
+          <a className="text-sm text-gray-300 hover:text-white" href="#projects">Projects</a>
+          <a className="text-sm text-gray-300 hover:text-white" href="#about">About</a>
+          <a className="text-sm text-gray-300 hover:text-white" href="#contact">Contact</a>
+        </nav>
+      </header>
+
+      <main className="max-w-5xl mx-auto px-6 pb-20">
+        {/* Hero */}
+        <section className="grid md:grid-cols-2 gap-10 items-center py-12">
+          <motion.div initial={{ x: -30, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ duration: 0.5 }}>
+            <h2 className="text-4xl md:text-5xl font-extrabold leading-tight">I build reliable cloud systems and scalable ML pipelines.</h2>
+            <p className="mt-4 text-gray-300">I design infra and data workflows that are production-ready, secure and maintainable. Currently focusing on IaC, Kubernetes and ML Ops.</p>
+
+            <div className="mt-6 flex gap-3">
+              <a href="#projects" className="px-4 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white font-medium">View Projects</a>
+              <a href="#contact" className="px-4 py-2 rounded-lg border border-gray-700 text-gray-200 hover:bg-white hover:text-gray-900">Hire / Contact</a>
+            </div>
+
+            <div className="mt-6 flex gap-3 items-center text-gray-400">
+              <a href="mailto:youremail@example.com" aria-label="email" className="flex items-center gap-2 hover:text-white"><Mail size={16}/>youremail@example.com</a>
+              <a href="https://github.com/yourusername" aria-label="github" className="flex items-center gap-2 hover:text-white"><Github size={16}/>GitHub</a>
+            </div>
+          </motion.div>
+
+          <motion.div className="bg-gradient-to-br from-gray-800 to-gray-700 rounded-2xl p-6 shadow-2xl"
+            initial={{ scale: 0.98, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ duration: 0.6 }}>
+            <div className="rounded-xl border border-gray-700 p-6">
+              <h3 className="text-xl font-semibold">Quick Stats</h3>
+              <ul className="mt-4 grid grid-cols-2 gap-4">
+                <li className="bg-gray-900 p-4 rounded-lg text-center">
+                  <div className="text-2xl font-bold">5+</div>
+                  <div className="text-sm text-gray-400">Years Experience</div>
+                </li>
+                <li className="bg-gray-900 p-4 rounded-lg text-center">
+                  <div className="text-2xl font-bold">20+</div>
+                  <div className="text-sm text-gray-400">Projects</div>
+                </li>
+                <li className="bg-gray-900 p-4 rounded-lg text-center col-span-2">
+                  <div className="text-lg font-semibold">Primary Focus</div>
+                  <div className="text-sm text-gray-400">Cloud infrastructure, automation, ML pipelines</div>
+                </li>
+              </ul>
+            </div>
+          </motion.div>
+        </section>
+
+        {/* About */}
+        <section id="about" className="mt-12 bg-gray-800 rounded-2xl p-8">
+          <motion.h3 initial={{ y: 10, opacity: 0 }} animate={{ y: 0, opacity: 1 }} className="text-2xl font-bold">About Me</motion.h3>
+          <motion.p initial={{ y: 6, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.05 }} className="mt-4 text-gray-300">
+            Hello! I build scalable systems — from infrastructure as code and continuous delivery to ML pipelines that are production-ready. I enjoy simplifying complexity and making systems that are observable, secure and cost-efficient.
+          </motion.p>
+
+          <div className="mt-6 grid md:grid-cols-2 gap-6">
+            <div>
+              <h4 className="font-semibold">Core Skills</h4>
+              <ul className="mt-3 space-y-2 text-gray-300">
+                {skills.map((s) => (
+                  <li key={s} className="inline-block bg-gray-900 px-3 py-1 rounded-full mr-2">{s}</li>
+                ))}
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="font-semibold">Education & Certificates</h4>
+              <ul className="mt-3 text-gray-300">
+                <li>Degree in Computer Science — XYZ University</li>
+                <li>Cert: AWS Certified Solutions Architect</li>
+                <li>Cert: Terraform Associate</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        {/* Projects */}
+        <section id="projects" className="mt-12">
+          <h3 className="text-2xl font-bold">Selected Projects</h3>
+          <div className="mt-6 grid md:grid-cols-3 gap-6">
+            {projects.map((p) => (
+              <motion.article key={p.title} className="bg-gray-800 rounded-lg p-5 shadow-lg border border-gray-700"
+                whileHover={{ translateY: -6 }}>
+                <h4 className="font-semibold text-lg">{p.title}</h4>
+                <p className="mt-2 text-gray-300 text-sm">{p.desc}</p>
+                <div className="mt-3 flex flex-wrap gap-2">
+                  {p.tags.map((t) => <span key={t} className="text-xs bg-gray-900 px-2 py-1 rounded">{t}</span>)}
+                </div>
+                <a href={p.link} className="mt-4 inline-block text-sm text-indigo-400 hover:underline">View details →</a>
+              </motion.article>
+            ))}
+          </div>
+        </section>
+
+        {/* Experience */}
+        <section className="mt-12 bg-gray-800 rounded-2xl p-8">
+          <h3 className="text-2xl font-bold">Experience</h3>
+          <div className="mt-4 space-y-4 text-gray-300">
+            <div>
+              <div className="flex justify-between">
+                <div>
+                  <div className="font-semibold">Senior Cloud Engineer</div>
+                  <div className="text-sm text-gray-400">Company ABC • 2022 — Present</div>
+                </div>
+                <div className="text-sm">Remote</div>
+              </div>
+              <p className="mt-2 text-sm">Built IaC modules, implemented blue/green deployments and reduced infra costs by 30% through autoscaling and rightsizing.</p>
+            </div>
+
+            <div>
+              <div className="flex justify-between">
+                <div>
+                  <div className="font-semibold">DevOps Engineer</div>
+                  <div className="text-sm text-gray-400">Company XYZ • 2019 — 2022</div>
+                </div>
+                <div className="text-sm">Bengaluru</div>
+              </div>
+              <p className="mt-2 text-sm">Led migration to Kubernetes and introduced GitOps workflows for deployment automation.</p>
+            </div>
+          </div>
+        </section>
+
+        {/* Contact */}
+        <section id="contact" className="mt-12">
+          <h3 className="text-2xl font-bold">Get in touch</h3>
+          <div className="mt-6 grid md:grid-cols-2 gap-6">
+            <div className="bg-gray-800 rounded-xl p-6">
+              <p className="text-gray-300">Looking for help with cloud infra, automation, or ML pipelines? Drop a message — I reply quickly.</p>
+
+              <div
